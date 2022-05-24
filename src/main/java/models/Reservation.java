@@ -22,6 +22,7 @@ import javax.persistence.Table;
 		private int flightseat;
 		private String depatureAirport;
 		private String arrivalAirport;
+		private String passengerName;
 		//this is for storing the date and time
 		private Clock depatureTime;
 		private Clock arrivalTime;
@@ -36,7 +37,7 @@ import javax.persistence.Table;
 		 */
 		
 		public Reservation(int id, String flightname, int flightnumber, String flightairplanename, int flightseat,
-				String depatureAirport, String arrivalAirport, Clock depatureTime, Clock arrivalTime) {
+				String depatureAirport, String arrivalAirport, Clock depatureTime, Clock arrivalTime , String passengerName) {
 			super();
 			this.id = id;
 			this.flightname = flightname;
@@ -47,6 +48,7 @@ import javax.persistence.Table;
 			this.arrivalAirport = arrivalAirport;
 			this.depatureTime = depatureTime;
 			this.arrivalTime = arrivalTime;
+			this.passengerName = passengerName;
 		}
 		public int getId() {
 			return id;
@@ -105,7 +107,7 @@ import javax.persistence.Table;
 		@Override
 		public int hashCode() {
 			return Objects.hash(arrivalAirport, arrivalTime, depatureAirport, depatureTime, flightairplanename, flightname,
-					flightnumber, flightseat, id);
+					flightnumber, flightseat, id, passengerName);
 		}
 		@Override
 		public boolean equals(Object obj) {
@@ -121,14 +123,22 @@ import javax.persistence.Table;
 					&& Objects.equals(depatureTime, other.depatureTime)
 					&& Objects.equals(flightairplanename, other.flightairplanename)
 					&& Objects.equals(flightname, other.flightname) && flightnumber == other.flightnumber
-					&& flightseat == other.flightseat && id == other.id;
+					&& flightseat == other.flightseat && id == other.id
+					&& Objects.equals(passengerName, other.passengerName);
 		}
+		
 		@Override
 		public String toString() {
 			return "Reservation [id=" + id + ", flightname=" + flightname + ", flightnumber=" + flightnumber
 					+ ", flightairplanename=" + flightairplanename + ", flightseat=" + flightseat + ", depatureAirport="
-					+ depatureAirport + ", arrivalAirport=" + arrivalAirport + ", depatureTime=" + depatureTime
-					+ ", arrivalTime=" + arrivalTime + "]";
+					+ depatureAirport + ", arrivalAirport=" + arrivalAirport + ", passengerName=" + passengerName
+					+ ", depatureTime=" + depatureTime + ", arrivalTime=" + arrivalTime + "]";
+		}
+		public String getPassengerName() {
+			return passengerName;
+		}
+		public void setPassengerName(String passengerName) {
+			this.passengerName = passengerName;
 		}
 		
 		
