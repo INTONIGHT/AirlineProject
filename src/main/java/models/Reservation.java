@@ -1,4 +1,5 @@
 package models;
+import java.sql.Date;
 import java.time.*;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -24,20 +25,17 @@ import javax.persistence.Table;
 		private String arrivalAirport;
 		private String passengerName;
 		//this is for storing the date and time
-		private Clock depatureTime;
-		private Clock arrivalTime;
+		private Date depatureTime;
+		private Date arrivalTime;
 		
-		//we dont want an empty reservation and we can assure ourselves we will want all this info
-		//so no other type of reservation will be allowed
-		/*
-		 * public Reservation(){
-		 * super();
-		 * }
-		 * is not allowed on purpose in our app.
-		 */
+		//we do actually need an empty reservation to then set things within the reservation
+		public Reservation() {
+			super();
+		}
+		
 		
 		public Reservation(int id, String flightname, int flightnumber, String flightairplanename, int flightseat,
-				String depatureAirport, String arrivalAirport, Clock depatureTime, Clock arrivalTime , String passengerName) {
+				String depatureAirport, String arrivalAirport, Date depatureTime, Date arrivalTime , String passengerName) {
 			super();
 			this.id = id;
 			this.flightname = flightname;
@@ -92,16 +90,16 @@ import javax.persistence.Table;
 		public void setArrivalAirport(String arrivalAirport) {
 			this.arrivalAirport = arrivalAirport;
 		}
-		public Clock getDepatureTime() {
+		public Date getDepatureTime() {
 			return depatureTime;
 		}
-		public void setDepatureTime(Clock depatureTime) {
+		public void setDepatureTime(Date depatureTime) {
 			this.depatureTime = depatureTime;
 		}
-		public Clock getArrivalTime() {
+		public Date getArrivalTime() {
 			return arrivalTime;
 		}
-		public void setArrivalTime(Clock arrivalTime) {
+		public void setArrivalTime(Date arrivalTime) {
 			this.arrivalTime = arrivalTime;
 		}
 		@Override
