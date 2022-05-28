@@ -10,7 +10,9 @@ public class User {
 	private String username, password;
 	private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	
-	//no empty user
+	public User() {
+		super();
+	}
 	public User(int id, String username, String password, ArrayList<Reservation> reservations) {
 		super();
 		this.id = id;
